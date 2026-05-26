@@ -1,45 +1,50 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {HomeScreen} from './src/screens/HomeScreen';
+import {BlockingJSScreen} from './src/screens/BlockingJSScreen';
+import {ChunkedScreen} from './src/screens/ChunkedScreen';
+import {InteractionScreen} from './src/screens/InteractionScreen';
+import {WorkletScreen} from './src/screens/WorkletScreen';
+import type {RootStackParamList} from './src/navigation/types';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+const App: React.FC = () => {
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{title: 'RNStudy — Experimentos'}}
+          />
+          <Stack.Screen
+            name="BlockingJS"
+            component={BlockingJSScreen}
+            options={{title: 'A — Blocking JS'}}
+          />
+          <Stack.Screen
+            name="Chunked"
+            component={ChunkedScreen}
+            options={{title: 'B — Chunked'}}
+          />
+          <Stack.Screen
+            name="Interaction"
+            component={InteractionScreen}
+            options={{title: 'C — InteractionManager'}}
+          />
+          <Stack.Screen
+            name="Worklet"
+            component={WorkletScreen}
+            options={{title: 'D — Worklet'}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+};
 
 export default App;
