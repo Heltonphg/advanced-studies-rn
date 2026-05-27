@@ -9,6 +9,7 @@ import Animated, {
   Easing,
 } from 'react-native-reanimated';
 import {BlockButton} from '../components/BlockButton';
+import {StepFooter} from '../components/StepFooter';
 
 export const WorkletScreen: React.FC = () => {
   const translateX = useSharedValue(0);
@@ -32,27 +33,31 @@ export const WorkletScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Parte D — Worklet (UI thread)</Text>
-      <Text style={styles.help}>
-        Inicie a animação e depois trave a JS thread. Por rodar como worklet
-        na UI thread, a animação continua suave.
-      </Text>
+      <View style={styles.body}>
+        <Text style={styles.title}>Passo 4 — Solução 3: Worklet (UI thread)</Text>
+        <Text style={styles.help}>
+          Inicie a animação e depois trave a JS thread. Por rodar como worklet
+          na UI thread, a animação continua suave.
+        </Text>
 
-      <View style={styles.track}>
-        <Animated.View style={[styles.box, animatedStyle]} />
+        <View style={styles.track}>
+          <Animated.View style={[styles.box, animatedStyle]} />
+        </View>
+
+        <Button title="Iniciar animação" onPress={startAnimation} />
+        <View style={{height: 8}} />
+        <Button title="Parar animação" onPress={stopAnimation} />
+        <View style={{height: 16}} />
+        <BlockButton duration={3000} title="Travar JS por ~3s (UI segue)" />
       </View>
-
-      <Button title="Iniciar animação" onPress={startAnimation} />
-      <View style={{height: 8}} />
-      <Button title="Parar animação" onPress={stopAnimation} />
-      <View style={{height: 16}} />
-      <BlockButton duration={3000} title="Travar JS por ~3s (UI segue)" />
+      <StepFooter route="Worklet" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, padding: 24, gap: 12, justifyContent: 'center'},
+  container: {flex: 1, padding: 24, gap: 12},
+  body: {flex: 1, gap: 12, justifyContent: 'center'},
   title: {fontSize: 20, fontWeight: '600'},
   help: {color: '#555'},
   track: {

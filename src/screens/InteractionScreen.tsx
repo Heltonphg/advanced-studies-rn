@@ -10,6 +10,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import type {RootStackParamList} from '../navigation/types';
+import {StepFooter} from '../components/StepFooter';
 
 type Nav = NativeStackNavigationProp<RootStackParamList>;
 
@@ -45,26 +46,33 @@ export const InteractionScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Parte C — InteractionManager</Text>
-      <Text style={styles.help}>
-        Use isto para adiar trabalho pesado até depois das animações/navegação
-        terminarem.
-      </Text>
-      <ActivityIndicator size="large" />
-      <Text style={styles.counter}>Tick: {tick}</Text>
-      <Text style={styles.status}>Status: {status}</Text>
-      <Button
-        title="Rodar pesado após interações"
-        onPress={runHeavyAfterInteractions}
-      />
-      <View style={{height: 12}} />
-      <Button title="Navegar e logar após transição" onPress={navigateThenHeavy} />
+      <View style={styles.body}>
+        <Text style={styles.title}>Passo 3 — Solução 2: InteractionManager</Text>
+        <Text style={styles.help}>
+          Use isto para adiar trabalho pesado até depois das
+          animações/navegação terminarem.
+        </Text>
+        <ActivityIndicator size="large" />
+        <Text style={styles.counter}>Tick: {tick}</Text>
+        <Text style={styles.status}>Status: {status}</Text>
+        <Button
+          title="Rodar pesado após interações"
+          onPress={runHeavyAfterInteractions}
+        />
+        <View style={{height: 12}} />
+        <Button
+          title="Navegar e logar após transição"
+          onPress={navigateThenHeavy}
+        />
+      </View>
+      <StepFooter route="Interaction" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, padding: 24, gap: 12, justifyContent: 'center'},
+  container: {flex: 1, padding: 24, gap: 12},
+  body: {flex: 1, gap: 12, justifyContent: 'center'},
   title: {fontSize: 20, fontWeight: '600'},
   help: {color: '#555'},
   counter: {fontSize: 18, textAlign: 'center'},

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text, Button, ActivityIndicator} from 'react-native';
+import {StepFooter} from '../components/StepFooter';
 
 const TOTAL_ITERATIONS = 500_000_000;
 const CHUNK_SIZE = 25_000_000;
@@ -41,27 +42,31 @@ export const ChunkedScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Parte B — Chunks com setTimeout</Text>
-      <Text style={styles.help}>
-        Mesmo trabalho da Parte A, mas quebrado em chunks. O spinner e o
-        contador continuam vivos entre os chunks.
-      </Text>
-      <ActivityIndicator size="large" />
-      <Text style={styles.counter}>Tick: {tick}</Text>
-      <Text style={styles.counter}>
-        Progresso: {(progress * 100).toFixed(1)}%
-      </Text>
-      <Button
-        title={running ? 'Rodando…' : 'Rodar em chunks'}
-        onPress={runChunked}
-        disabled={running}
-      />
+      <View style={styles.body}>
+        <Text style={styles.title}>Passo 2 — Solução 1: Chunks</Text>
+        <Text style={styles.help}>
+          Mesmo trabalho do Passo 1, mas quebrado em chunks. O spinner e o
+          contador continuam vivos entre os chunks.
+        </Text>
+        <ActivityIndicator size="large" />
+        <Text style={styles.counter}>Tick: {tick}</Text>
+        <Text style={styles.counter}>
+          Progresso: {(progress * 100).toFixed(1)}%
+        </Text>
+        <Button
+          title={running ? 'Rodando…' : 'Rodar em chunks'}
+          onPress={runChunked}
+          disabled={running}
+        />
+      </View>
+      <StepFooter route="Chunked" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, padding: 24, gap: 16, justifyContent: 'center'},
+  container: {flex: 1, padding: 24, gap: 16},
+  body: {flex: 1, gap: 16, justifyContent: 'center'},
   title: {fontSize: 20, fontWeight: '600'},
   help: {color: '#555'},
   counter: {fontSize: 18, textAlign: 'center'},

@@ -4,4 +4,6 @@ export type RootStackParamList = {
   Chunked: undefined;
   Interaction: undefined;
   Worklet: undefined;
+  Gesture: undefined;
+  Parallax: undefined;
 };
