@@ -54,7 +54,7 @@ export const ParallaxScreen: React.FC = () => {
     <View style={styles.container}>
       <Animated.View style={[styles.header, headerStyle]}>
         <Animated.Text style={[styles.headerText, titleStyle]}>
-          Parallax 🌊
+          Passo 5 — Parallax 🌊
         </Animated.Text>
       </Animated.View>
 

@@ -34,7 +34,7 @@ export const WorkletScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-        <Text style={styles.title}>Passo 4 — Solução 3: Worklet (UI thread)</Text>
+        <Text style={styles.title}>Passo 3 — Solução: Worklet (UI thread)</Text>
         <Text style={styles.help}>
           Inicie a animação e depois trave a JS thread. Por rodar como worklet
           na UI thread, a animação continua suave.

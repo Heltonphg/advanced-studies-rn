@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text, Button, ActivityIndicator} from 'react-native';
+import {JsSpinner} from '../components/JsSpinner';
 import {StepFooter} from '../components/StepFooter';
 
 const TOTAL_ITERATIONS = 500_000_000;
@@ -45,10 +46,24 @@ export const ChunkedScreen: React.FC = () => {
       <View style={styles.body}>
         <Text style={styles.title}>Passo 2 — Solução 1: Chunks</Text>
         <Text style={styles.help}>
-          Mesmo trabalho do Passo 1, mas quebrado em chunks. O spinner e o
-          contador continuam vivos entre os chunks.
+          Mesmo trabalho do Passo 1, mas quebrado em chunks com setTimeout.
+          Agora o spinner JS-driven continua vivo entre os chunks — porque a
+          JS thread "respira" entre eles.
         </Text>
-        <ActivityIndicator size="large" />
+
+        <View style={styles.spinnerRow}>
+          <View style={styles.spinnerCol}>
+            <ActivityIndicator size="large" />
+            <Text style={styles.spinnerLabel}>Nativo</Text>
+            <Text style={styles.spinnerHint}>(UI thread)</Text>
+          </View>
+          <View style={styles.spinnerCol}>
+            <JsSpinner size={40} />
+            <Text style={styles.spinnerLabel}>JS-driven</Text>
+            <Text style={styles.spinnerHint}>(setInterval + setState)</Text>
+          </View>
+        </View>
+
         <Text style={styles.counter}>Tick: {tick}</Text>
         <Text style={styles.counter}>
           Progresso: {(progress * 100).toFixed(1)}%
@@ -70,4 +85,12 @@ const styles = StyleSheet.create({
   title: {fontSize: 20, fontWeight: '600'},
   help: {color: '#555'},
   counter: {fontSize: 18, textAlign: 'center'},
+  spinnerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  spinnerCol: {alignItems: 'center', gap: 4},
+  spinnerLabel: {fontSize: 14, fontWeight: '600', color: '#333'},
+  spinnerHint: {fontSize: 11, color: '#888'},
 });

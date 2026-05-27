@@ -7,7 +7,6 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {HomeScreen} from './src/screens/HomeScreen';
 import {BlockingJSScreen} from './src/screens/BlockingJSScreen';
 import {ChunkedScreen} from './src/screens/ChunkedScreen';
-import {InteractionScreen} from './src/screens/InteractionScreen';
 import {WorkletScreen} from './src/screens/WorkletScreen';
 import {GestureScreen} from './src/screens/GestureScreen';
 import {ParallaxScreen} from './src/screens/ParallaxScreen';
@@ -19,7 +18,6 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const SCREENS: Record<StepRoute, React.ComponentType<any>> = {
   BlockingJS: BlockingJSScreen,
   Chunked: ChunkedScreen,
-  Interaction: InteractionScreen,
   Worklet: WorkletScreen,
   Gesture: GestureScreen,
   Parallax: ParallaxScreen,
