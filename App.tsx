@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import DeviceInfo from './specs/NativeDeviceInfo';
+import DeviceInfo from './specs/NativeRNStudyDeviceInfo';
 import {useBatteryLevel} from './src/hooks/useBatteryLevel';
 
 function formatBytes(bytes: number): string {
@@ -47,8 +47,8 @@ const Row: React.FC<{label: string; value: string}> = ({label, value}) => (
 
 const App: React.FC = () => {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
+    <SafeAreaProvider >
+      <SafeAreaView>
         <ScrollView contentContainerStyle={styles.content}>
           <Text style={styles.title}>RNStudy — TurboModules</Text>
           <Text style={styles.subtitle}>
@@ -64,7 +64,7 @@ const App: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   content: {
     padding: 24,

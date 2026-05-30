@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import Battery from '../../specs/NativeBatteryInfo';
+import Battery from '../../specs/NativeRNStudyBatteryInfo';
 
 export function useBatteryLevel() {
   const [level, setLevel] = useState<number | null>(null);

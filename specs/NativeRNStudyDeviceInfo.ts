@@ -6,4 +6,4 @@ export interface Spec extends TurboModule {
   getStorageInfo(): {totalBytes: number; freeBytes: number};
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('NativeDeviceInfo');
+export default TurboModuleRegistry.getEnforcing<Spec>('RNStudyDeviceInfo');

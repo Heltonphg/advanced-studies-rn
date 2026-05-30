@@ -8,7 +8,7 @@ import android.os.BatteryManager
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
-import com.rnstudy.specs.NativeBatteryInfoSpec // <- a classe GERADA pelo Codegen
+import com.rnstudy.specs.NativeRNStudyBatteryInfoSpec // <- a classe GERADA pelo Codegen
 
 /**
  * Exemplo 2 — o módulo útil, com os três padrões reais de comunicação nativa:
@@ -20,7 +20,7 @@ import com.rnstudy.specs.NativeBatteryInfoSpec // <- a classe GERADA pelo Codege
  * com o transporte para o JS embutido — aqui a gente só o chama.
  */
 class BatteryInfoModule(reactContext: ReactApplicationContext) :
-  NativeBatteryInfoSpec(reactContext) {
+  NativeRNStudyBatteryInfoSpec(reactContext) {
 
   private var receiver: BroadcastReceiver? = null
 
@@ -74,6 +74,6 @@ class BatteryInfoModule(reactContext: ReactApplicationContext) :
   }
 
   companion object {
-    const val NAME = "NativeBatteryInfo"
+    const val NAME = "RNStudyBatteryInfo"
   }
 }

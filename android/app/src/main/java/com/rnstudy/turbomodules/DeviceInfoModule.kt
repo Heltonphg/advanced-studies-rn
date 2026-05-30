@@ -3,7 +3,7 @@ package com.rnstudy.turbomodules
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.WritableMap
-import com.rnstudy.specs.NativeDeviceInfoSpec // <- a classe GERADA pelo Codegen
+import com.rnstudy.specs.NativeRNStudyDeviceInfoSpec // <- a classe GERADA pelo Codegen
 
 /**
  * Exemplo 1 — o menor TurboModule que prova o pipeline inteiro.
@@ -13,7 +13,7 @@ import com.rnstudy.specs.NativeDeviceInfoSpec // <- a classe GERADA pelo Codegen
  * abstratos é a verdade, derivada do spec em build.
  */
 class DeviceInfoModule(reactContext: ReactApplicationContext) :
-  NativeDeviceInfoSpec(reactContext) {
+  NativeRNStudyDeviceInfoSpec(reactContext) {
 
   // Tem que ser idêntico à string do getEnforcing no spec.
   override fun getName() = NAME
@@ -36,6 +36,6 @@ class DeviceInfoModule(reactContext: ReactApplicationContext) :
   }
 
   companion object {
-    const val NAME = "NativeDeviceInfo"
+    const val NAME = "RNStudyDeviceInfo"
   }
 }
